@@ -66,6 +66,8 @@ nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1.5
 .tab[aria-selected=true]{color:var(--lapis);background:var(--sky);font-weight:700}
 @media(max-width:600px){.facade{width:92px;height:92px}.tl li{grid-template-columns:4.4em minmax(0,1fr)}.btn{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:no-preference){section{animation:in .25s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}}}
+.card h4{font-family:Alegreya,Georgia,serif;font-size:1.15em;color:var(--lapis);margin:18px 0 6px}
+.list button[aria-current=true]{border-color:var(--lapis);background:var(--sky)}
 </style>
 </head>
 <body>
@@ -101,62 +103,60 @@ nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1.5
   <div class="card big">
     <p class="ref" id="vref">Vangelo del giorno</p>
     <p class="meta" id="vtit"></p>
-    <p id="vtext" class="wait">Sto preparando il Vangelo di oggi…</p>
+    <p class="meta" id="letture"></p>
+    <div id="vtext"><p class="wait">Sto preparando il Vangelo di oggi…</p></div>
     <div class="row">
       <button class="btn" type="button" data-say="vangelo" hidden><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg><span>Ascolta</span></button>
       <a class="btn alt" id="vlink" href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html">Testo completo e audio ufficiale</a>
     </div>
   </div>
-  <div class="card">
-    <span class="kind">Le parole del Papa</span>
-    <h3 id="ptit">Il commento al Vangelo</h3>
-    <p class="meta" id="pfonte"></p>
-    <p id="ptext" class="wait">In arrivo insieme al Vangelo.</p>
-    <div class="row"><button class="btn" type="button" data-say="papa" hidden><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span>Ascolta</span></button></div>
-  </div>
-  <p class="src" id="vnote">Fonte: Vatican News, «Parola del giorno». Il Vangelo e le parole del Papa sono riassunti con parole semplici. Il testo completo è sul sito ufficiale.</p>
+  <div id="vmore"></div>
+  <p class="src">Fonti: Vatican News, «Parola del giorno», e la tradizione della Chiesa. Il brano, il commento e le parole del Papa sono riassunti e spiegati con parole nostre; il testo ufficiale è sul sito del Vaticano.</p>
 </section>
 
 <section id="teologia" aria-labelledby="h-t" hidden>
-  <h2 id="h-t">Pillole di teologia</h2>
-  <p class="lead">Ogni giorno una verità della fede, spiegata in poche righe.</p>
+  <h2 id="h-t">Teologia</h2>
+  <p class="lead">Un piccolo corso in sedici lezioni. Ogni lezione parte dalla Scrittura, attraversa i Padri della Chiesa e il Magistero, e arriva alla vita di ogni giorno.</p>
   <div id="pill"></div>
-  <h3 style="font-size:1.3em;margin:24px 0 10px">Tutte le pillole</h3>
+  <h3 style="font-size:1.3em;margin:24px 0 10px">Tutte le lezioni</h3>
   <div class="list" id="plist"></div>
 </section>
 
 <section id="sacerdote" aria-labelledby="h-s" hidden>
   <h2 id="h-s">Mons. Ignazio Leone</h2>
-  <p class="lead">Abate e rettore di Santa Maria di Nazareth, a Barletta. È teologo e ha insegnato i sacramenti e lo Spirito Santo all'Istituto di Scienze Religiose di Trani.</p>
-  <h3 style="font-size:1.3em;margin:6px 0 10px">I suoi pensieri</h3>
+  <p class="lead">Abate e rettore di Santa Maria di Nazareth, a Barletta. Teologo, ha insegnato Teologia sacramentaria e Pneumatologia all'Istituto Superiore di Scienze Religiose di Trani e ha fatto parte del servizio diocesano per il catecumenato.</p>
+  <h3 style="font-size:1.3em;margin:6px 0 10px">I suoi studi e il loro contesto teologico</h3>
+  <div id="studi"></div>
+  <h3 style="font-size:1.3em;margin:24px 0 10px">I suoi pensieri</h3>
   <div id="thoughts"></div>
-  <h3 style="font-size:1.3em;margin:24px 0 10px">I suoi scritti</h3>
+  <h3 style="font-size:1.3em;margin:24px 0 10px">Altri scritti</h3>
   <div id="writings"></div>
   <details class="card"><summary>La sua vita</summary>
     <ul class="tl">
       <li><b>1946</b><span>Nasce a Barletta il 31 ottobre.</span></li>
-      <li><b>1970</b><span>Studia teologia a Roma, alla Pontificia Università Lateranense.</span></li>
+      <li><b>1970</b><span>Studia teologia a Roma, alla Pontificia Università Lateranense, da alunno del Seminario Francese. Sono gli anni dell'applicazione del Concilio Vaticano II, che segneranno tutto il suo ministero.</span></li>
       <li><b>1972</b><span>Il 24 giugno è ordinato sacerdote da mons. Giuseppe Carata, nella Concattedrale di Barletta.</span></li>
-      <li><b>Servizio</b><span>Insegna religione all'ITC, segue i giovani di Azione Cattolica, è cappellano dell'ospedale e parroco del Santuario di Santa Lucia.</span></li>
-      <li><b>Trani</b><span>Insegna Teologia sacramentaria e Pneumatologia all'ISSR "San Nicola, il Pellegrino".</span></li>
-      <li><b>2016</b><span>Dal 1° ottobre è abate della chiesa di Santa Maria di Nazareth.</span></li>
-      <li><b>2021</b><span>La sua chiesa viene unita al Santuario della Santa Casa di Loreto. Da allora vi si riceve l'indulgenza plenaria.</span></li>
+      <li><b>Servizio</b><span>Insegna religione all'ITC, segue i giovani di Azione Cattolica, è cappellano dell'ospedale e per molti anni parroco del Santuario di Santa Lucia.</span></li>
+      <li><b>Trani</b><span>Insegna Teologia sacramentaria e Pneumatologia all'ISSR "San Nicola, il Pellegrino" e scrive per la rivista dell'Istituto, «Salós».</span></li>
+      <li><b>2016</b><span>Dal 1° ottobre è abate della chiesa arcivescovile di Santa Maria di Nazareth.</span></li>
+      <li><b>2021</b><span>Il 12 settembre la sua chiesa viene aggregata al Santuario della Santa Casa di Loreto: vi si può ricevere l'indulgenza plenaria.</span></li>
     </ul>
   </details>
-  <p class="src">Raccolta da fonti pubbliche, novembre 2026. I riassunti sono scritti per questa app e non sono testi suoi.</p>
+  <p class="src">Raccolta da fonti pubbliche, novembre 2026. Le parti di contesto teologico sono scritte per questa app e non riportano il testo dei suoi studi, che non è disponibile in rete.</p>
 </section>
 
 <section id="santo" aria-labelledby="h-sa" hidden>
   <h2 id="h-sa">Il santo di oggi</h2>
   <div class="card big">
-    <h3 id="snome" class="wait">In arrivo…</h3>
-    <p id="stext"></p>
+    <h3 id="snome"><span class="wait">In arrivo…</span></h3>
+    <div id="stext"></div>
     <div class="row">
       <button class="btn" type="button" data-say="santo" hidden><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span>Ascolta</span></button>
-      <a class="btn alt" id="slink" href="https://www.vaticannews.va/it/santo-del-giorno.html">Leggi tutto su Vatican News</a>
+      <a class="btn alt" id="slink" href="https://www.vaticannews.va/it/santo-del-giorno.html">Leggi su Vatican News</a>
     </div>
   </div>
-  <p class="src">Fonte: Vatican News, «Santo del giorno», riassunto con parole semplici.</p>
+  <div id="smore"></div>
+  <p class="src">Fonte: Vatican News, «Santo del giorno», e fonti storiche, raccontate con parole nostre.</p>
 </section>
 </main>
 
@@ -167,6 +167,7 @@ nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1.5
   <button class="tab" role="tab" data-v="santo" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M8 5a4 1.5 0 0 0 8 0"/><path d="M8 21l1-9h6l1 9M9 14l-3 2M15 14l3 2"/></svg>Santo</button>
 </nav>
 
+<script src="lezioni.js"></script>
 <script>
 {
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -177,105 +178,100 @@ const iso=`${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
 $("today").textContent=now.toLocaleDateString("it-IT",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).replace(/^./,c=>c.toUpperCase());
 $("vlink").href=`https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno/${now.getFullYear()}/${pad(now.getMonth()+1)}/${pad(now.getDate())}.html`;
 $("slink").href=`https://www.vaticannews.va/it/santo-del-giorno/${pad(now.getMonth()+1)}/${pad(now.getDate())}.html`;
-
-const P=[
- {t:"La Santissima Trinità",x:"Dio è uno solo, ma non è solo. È Padre, Figlio e Spirito Santo: tre Persone unite da un unico amore. Per questo la fede cristiana dice che Dio è amore: non un amore che aspetta qualcuno, ma un amore che esiste da sempre dentro Dio stesso. Ogni volta che facciamo il segno della croce entriamo in questa famiglia divina.",b:"2 Cor 13,13",c:"232-267",d:"Quando faccio il segno della croce, penso a chi sto chiamando?"},
- {t:"La grazia",x:"La grazia è un dono gratuito: è la vita stessa di Dio che entra nella nostra. Non si compra e non si merita, si accoglie. Ci viene data nel Battesimo e cresce con i sacramenti e la preghiera. La grazia non ci toglie la libertà: ci aiuta a usarla per il bene.",b:"Ef 2,8",c:"1996-2005",d:"Quale dono ho ricevuto oggi senza averlo chiesto?"},
- {t:"Lo Spirito Santo",x:"Lo Spirito Santo è Dio che abita in noi. Gesù lo ha promesso come Consolatore: è lui che ci fa pregare quando non troviamo le parole, che ci ricorda il Vangelo e ci dà forza nelle prove. I suoi doni sono sette: sapienza, intelletto, consiglio, fortezza, scienza, pietà e timor di Dio.",b:"Rm 8,26",c:"683-747",d:"Di quale dono dello Spirito ho più bisogno oggi?"},
- {t:"L'Eucaristia",x:"Nella Messa il pane e il vino diventano davvero il Corpo e il Sangue di Gesù. La Chiesa la chiama fonte e culmine della vita cristiana: da lì parte tutto e lì tutto ritorna. Ricevere la Comunione è unirsi a Cristo e, attraverso di lui, a tutti i fratelli.",b:"Lc 22,19",c:"1322-1419",d:"Con quale cuore mi avvicino alla Comunione?"},
- {t:"La Confessione, sacramento della Pasqua",x:"Gesù risorto, la sera di Pasqua, dona agli apostoli lo Spirito per perdonare i peccati. Per questo la Confessione è un sacramento pasquale: è la vittoria della Risurrezione sul nostro peccato. Non è un tribunale ma un abbraccio, come quello del padre al figlio che ritorna. Mons. Leone ha dedicato a questo tema uno dei suoi studi.",b:"Gv 20,22-23",c:"1422-1498",d:"C'è qualcosa che vorrei finalmente affidare alla misericordia di Dio?"},
- {t:"Il Battesimo",x:"Con il Battesimo diventiamo figli di Dio e membri della Chiesa. L'acqua è segno di una morte e di una nascita: muore l'uomo vecchio, nasce una vita nuova in Cristo. È la porta di tutti gli altri sacramenti. Il Battesimo si riceve una volta sola, e il suo sigillo resta per sempre.",b:"Rm 6,4",c:"1213-1284",d:"Conosco la data del mio Battesimo? Potrei ricordarla come un compleanno."},
- {t:"La Cresima",x:"La Cresima completa il Battesimo. Il vescovo unge la fronte con il crisma e dona lo Spirito Santo, come a Pentecoste. Rende il cristiano un testimone: qualcuno che non tiene la fede per sé, ma la mostra con la vita.",b:"At 2,1-4",c:"1285-1321",d:"In che modo oggi posso essere testimone, anche con un piccolo gesto?"},
- {t:"L'Unzione degli infermi",x:"Non è il sacramento della fine, ma quello della forza nella malattia. Si può ricevere quando si è gravemente malati o molto anziani, anche più volte. Il sacerdote unge la fronte e le mani: Gesù si fa vicino, dà pace, coraggio e, se Dio vuole, anche la guarigione.",b:"Gc 5,14-15",c:"1499-1532",d:"C'è una persona malata a cui posso portare la vicinanza della Chiesa?"},
- {t:"La Parola di Dio",x:"La Bibbia non è soltanto un libro antico: è Dio che parla oggi, a me. La Chiesa la legge con lo stesso amore con cui venera l'Eucaristia. Leggerla ogni giorno, anche pochi versetti, è come accendere una lampada sul cammino.",b:"Sal 119,105",c:"101-141",d:"Quale parola del Vangelo di oggi voglio portare con me?"},
- {t:"La preghiera",x:"Pregare è parlare con Dio come con un amico, e soprattutto ascoltarlo. Non servono parole difficili: basta un cuore sincero. Si può pregare con le parole della Chiesa, con parole nostre o anche in silenzio. Gesù insegna a entrare nella propria stanza e parlare al Padre nel segreto.",b:"Mt 6,6",c:"2558-2565",d:"Riesco a trovare oggi cinque minuti di silenzio con Dio?"},
- {t:"La fede",x:"La fede è la risposta dell'uomo a Dio che si fa conoscere. È fidarsi di lui come ci si fida di una persona amata, anche quando non si vede tutto. La fede è un dono, ma chiede anche la nostra libertà. E cresce quando la si condivide con gli altri.",b:"Eb 11,1",c:"142-184",d:"In quale situazione mi è chiesto oggi di fidarmi di Dio?"},
- {t:"La speranza",x:"La speranza cristiana non è un semplice ottimismo. È la certezza che Dio mantiene le sue promesse e che la vita non finisce nel nulla. Ci sostiene nei momenti di scoraggiamento e ci fa guardare il futuro con fiducia.",b:"Rm 5,5",c:"1817-1821",d:"A chi posso portare un po' di speranza oggi?"},
- {t:"La carità",x:"La carità è la più grande delle virtù: è amare Dio sopra ogni cosa e il prossimo come noi stessi. San Paolo la descrive così: è paziente, è benigna, non cerca il proprio interesse, tutto scusa e tutto spera. Senza carità, anche le opere più belle restano vuote.",b:"1 Cor 13,4-7",c:"1822-1829",d:"Quale gesto di pazienza posso fare oggi?"},
- {t:"La misericordia",x:"La misericordia è il volto di Dio verso chi sbaglia. Nella parabola del figlio prodigo il padre lo vede da lontano, gli corre incontro e lo abbraccia prima ancora che parli. Dio non si stanca mai di perdonare: siamo noi che a volte ci stanchiamo di chiedere perdono.",b:"Lc 15,20",c:"1846-1848",d:"Chi posso perdonare, almeno nel mio cuore?"},
- {t:"La Provvidenza",x:"Dio non ha creato il mondo per poi abbandonarlo: se ne prende cura ogni giorno. Gesù ricorda gli uccelli del cielo, che il Padre nutre. La Provvidenza non elimina le difficoltà, ma ci assicura che nessuna di esse sfugge al suo sguardo d'amore.",b:"Mt 6,26",c:"302-314",d:"Dove ho visto la mano di Dio negli ultimi giorni?"},
- {t:"L'Incarnazione",x:"Il Figlio di Dio si è fatto uomo nel grembo di Maria, a Nazareth. Dio non ci ha salvati da lontano: è entrato nella nostra storia, ha avuto fame, ha lavorato, ha pianto. Per questo nessuna parte della nostra vita gli è estranea. La chiesa di Santa Maria di Nazareth a Barletta custodisce proprio la memoria di questo mistero.",b:"Gv 1,14",c:"461-483",d:"Quale momento della mia giornata vorrei far vivere a Gesù insieme a me?"},
- {t:"La Risurrezione",x:"Il cuore della fede è questo: Gesù è risorto. Non è un ricordo ma una persona viva. San Paolo dice che, se Cristo non fosse risorto, la nostra fede sarebbe vuota. La Risurrezione è la promessa che anche noi, un giorno, vivremo con lui.",b:"1 Cor 15,14",c:"638-658",d:"Come cambia il mio modo di vedere la morte, credendo nella Risurrezione?"},
- {t:"Maria, Madre della Chiesa",x:"Sotto la croce Gesù affida Maria a Giovanni e Giovanni a Maria. In quel discepolo ci siamo tutti noi: Maria diventa madre di ogni credente. Lei non prende il posto di Gesù, ma ci porta sempre a lui, come a Cana: «Fate quello che vi dirà».",b:"Gv 19,26-27",c:"963-975",d:"Che cosa vorrei affidare oggi a Maria?"},
- {t:"La comunione dei santi",x:"La Chiesa è una grande famiglia che unisce chi è ancora sulla terra, chi si sta purificando e chi è già in Paradiso. Possiamo pregare gli uni per gli altri e chiedere l'aiuto dei santi. Nessuno è solo: siamo circondati da una moltitudine di testimoni.",b:"Eb 12,1",c:"946-962",d:"Per quale persona cara defunta voglio pregare oggi?"},
- {t:"Gli angeli custodi",x:"La fede insegna che ogni persona ha accanto un angelo che la custodisce e la guida. Gli angeli sono creature spirituali che servono Dio e ci accompagnano nel cammino. Il Salmo dice che Dio darà ordine ai suoi angeli di custodirci in tutti i nostri passi.",b:"Sal 91,11",c:"328-336",d:"Mi ricordo di ringraziare il mio angelo custode?"},
- {t:"La coscienza",x:"La coscienza è la voce interiore che ci dice di fare il bene ed evitare il male. È il luogo più intimo dove l'uomo è solo con Dio. Va ascoltata, ma anche formata, con la Parola di Dio, la preghiera e l'insegnamento della Chiesa.",b:"Rm 2,15",c:"1776-1802",d:"Cosa mi suggerisce la coscienza in una scelta di questi giorni?"},
- {t:"Il Purgatorio e la preghiera per i defunti",x:"Chi muore nell'amicizia di Dio, ma non è ancora del tutto purificato, attraversa una purificazione prima del Paradiso: è il Purgatorio. Le nostre preghiere, la Messa e le opere buone possono aiutare i nostri cari defunti. È un legame d'amore che la morte non spezza.",b:"2 Mac 12,45",c:"1030-1032",d:"Posso far celebrare una Messa per qualcuno che non c'è più?"},
- {t:"Le indulgenze",x:"Il peccato perdonato nella Confessione può lasciare in noi delle ferite, una pena da sanare. L'indulgenza è un dono della Chiesa che aiuta a guarirle. Si riceve con la Confessione, la Comunione, la preghiera per il Papa e un cuore distaccato dal peccato. Nella chiesa di Santa Maria di Nazareth, unita a Loreto, si può ricevere l'indulgenza plenaria.",b:"Gv 20,23",c:"1471-1479",d:"Quando potrei vivere una giornata di indulgenza?"},
- {t:"La domenica, giorno del Signore",x:"La domenica è il giorno in cui Gesù è risorto. Fin dall'inizio i cristiani si riuniscono in quel giorno per spezzare il pane. Andare a Messa la domenica non è solo un dovere: è l'appuntamento settimanale con il Signore e con la comunità.",b:"At 20,7",c:"2174-2188",d:"Come posso rendere la prossima domenica diversa dagli altri giorni?"},
- {t:"La Chiesa, popolo di Dio",x:"La Chiesa non è soltanto un edificio o i sacerdoti: siamo tutti noi battezzati. San Pietro la chiama popolo che Dio si è scelto, per annunciare le sue meraviglie. La parrocchia è la Chiesa vicino a casa, dove la fede si vive insieme.",b:"1 Pt 2,9",c:"781-786",d:"Cosa posso offrire io alla mia comunità parrocchiale?"},
- {t:"La vita eterna",x:"Il Paradiso è stare per sempre con Dio e con tutti quelli che amiamo in lui. Gesù dice che nella casa del Padre ci sono molti posti e che va a prepararne uno per noi. La vita eterna comincia già ora, ogni volta che viviamo nell'amore.",b:"Gv 14,2",c:"1023-1029",d:"Quale gesto d'amore di oggi è già un pezzo di Paradiso?"},
- {t:"Il Padre Nostro",x:"I discepoli chiedono a Gesù: insegnaci a pregare. Lui risponde con il Padre Nostro, la preghiera più perfetta. Ci insegna a chiamare Dio Padre, a mettere al primo posto il suo Regno e poi a chiedere il pane, il perdono e l'aiuto nelle prove.",b:"Lc 11,1-4",c:"2759-2865",d:"Quale frase del Padre Nostro sento più mia oggi?"},
- {t:"La sofferenza",x:"La fede non spiega fino in fondo il dolore, ma non lo lascia senza senso. Gesù ha sofferto con noi e per noi. San Paolo dice che, unite alle sue, anche le nostre sofferenze diventano offerta d'amore per la Chiesa. Nessuna lacrima è persa agli occhi di Dio.",b:"Col 1,24",c:"1500-1501",d:"Posso offrire a Dio una fatica di questi giorni?"}
-];
-const W=[
- {t:"La preevangelizzazione, prima tappa dell'iniziazione cristiana",k:"Studio",m:"Rivista «Salós». Pubblicato dall'Arcidiocesi nel 2004",p:"Riflette sul primo annuncio a chi si avvicina alla fede da adulto, seguendo le indicazioni dei Vescovi italiani. L'idea di fondo è che oggi si diventa cristiani per scelta personale, non più per nascita."},
- {t:"La penitenza sacramento pasquale",k:"Studio",m:"Rivista «Salós», n. 10, 2010",p:"Uno studio sulla Confessione legata alla Pasqua di Cristo. Il testo integrale non è in rete."},
- {t:"La parrocchia in una società in evoluzione, in una Chiesa in cammino",k:"Studio",m:"Rivista «Salós», n. 10, 2010",p:"Una riflessione sul ruolo della parrocchia in un mondo che cambia. Il testo integrale non è in rete."},
- {t:"Santa Lucia",k:"Libro",m:"Con Michele Dinicastro. Cafagna Editore, 2011",p:"Un libro sulla santa protettrice della vista, scritto quando era parroco del Santuario di Santa Lucia."},
- {t:"La luce della fede",k:"Conferenza",m:"Cerignola, 20 aprile 2016",p:"Una conferenza spirituale durante la visita delle reliquie di Santa Lucia."},
- {t:"Saggio in «Il Burattinaio Mangiafuoco»",k:"Contributo",m:"A cura di Domenico Doronzo, 2018",p:"Un libro illustrato su potere, fede e illustrazione, in cui scrive come teologo."}
-];
-const T=[
- {y:"Settembre 2026",q:"«Una vera esperienza di santità»",p:"È quello che augura a chi viene a pregare davanti alla Madonna di Loreto, regina della famiglia e della pace e salute degli infermi.",u:"https://telenorba.it/2026/09/01/barletta-attesa-per-leffige-della-madonna-di-loreto/",s:"Telenorba"},
- {y:"Aprile 2026",q:"«Il cuore di ogni credente si rivolge a una Mamma»",p:"Nella sofferenza e nella crisi, dice, ci si rivolge a Maria. Ricorda che la pace non è uno slogan: nasce da una vita vissuta nella forza di Cristo risorto.",u:"https://www.barlettaviva.it/notizie/la-madonna-di-loreto-a-barletta-sara-accolta-presso-la-chiesa-arcivescovile-santa-maria-di-nazaret/",s:"BarlettaViva"},
- {y:"Settembre 2025",q:"Maria, Madre di Gesù e Madre della Chiesa",p:"È il tema delle sue meditazioni per la festa del Santissimo Nome di Maria. Affida a Maria la giustizia, la pace tra i popoli e la serenità delle famiglie.",u:"https://www.barlettaviva.it/notizie/barletta-celebra-al-festa-del-santissimo-nome-di-maria-di-nazareth/",s:"BarlettaViva"},
- {y:"Aprile 2016",q:"«La fede è il collirio della vita spirituale»",p:"Lo dice alla Messa per le reliquie di Santa Lucia. I santi ci sembrano lontani, spiega, ma le reliquie rendono la fede vicina e concreta.",u:"https://www.barlettaviva.it/notizie/le-spoglie-di-santa-lucia-a-barletta-il-ricordo-della-santa-dopo-secoli-e-vivo-nel-cuore-dei-fedeli-e-di-tutta-la-comunita-religiosa/",s:"BarlettaViva"},
- {y:"Giugno 2012",q:"«Ma questo è stato sempre vero, a partire dal nostro Maestro Gesù Cristo»",p:"Per i 40 anni di sacerdozio riconosce che oggi è sempre più difficile essere credenti. Ma il sacerdote resta radicato nella Parola e nell'Eucaristia.",u:"http://www.incomunione.it/incomunione/assets/incomunione2012-02.pdf",s:"In Comunione"}
-];
-
+const SPK='<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg>';
+const sayBtn=k=>`<div class="row"><button class="btn" type="button" data-say="${k}" hidden>${SPK}<span>Ascolta</span></button></div>`;
+const paras=t=>String(t||"").split(/\n+/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join("");
 const say={};
+
+/* ---------- Teologia ---------- */
+const L=window.LEZIONI||[];
 const start=new Date(now.getFullYear(),0,0);
 const doy=Math.floor((now-start)/864e5);
-let pi=doy%P.length;
-const drawPill=i=>{
- const p=P[i];
- say.pill=`${p.t}. ${p.x} Per la giornata: ${p.d}`;
- $("pill").innerHTML=`<article class="card big"><span class="kind">${i===doy%P.length?"La pillola di oggi":"Pillola"}</span><h3>${esc(p.t)}</h3><p>${esc(p.x)}</p><p class="meta">Dalla Scrittura: ${esc(p.b)} · Catechismo della Chiesa Cattolica, nn. ${esc(p.c)}</p><p class="ask"><b>Per la giornata:</b> ${esc(p.d)}</p><div class="row"><button class="btn" type="button" data-say="pill"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg><span>Ascolta</span></button></div></article>`;
- $("plist").innerHTML=P.map((x,j)=>`<button type="button" data-p="${j}"><b>${esc(x.t)}</b><span>${j===doy%P.length?"oggi":""}</span></button>`).join("");
+const todayL=L.length?doy%L.length:0;
+const drawLesson=i=>{
+ const l=L[i];if(!l)return;
+ say.lez=[l.t,...l.s.map(x=>x[0]+". "+x[1])].join("\n");
+ $("pill").innerHTML=`<article class="card big"><span class="kind">${i===todayL?"La lezione di oggi":"Lezione "+(i+1)+" di "+L.length}</span><h3>${esc(l.t)}</h3><p class="meta">${esc(l.area)}</p>${sayBtn("lez")}${l.s.map(x=>`<h4>${esc(x[0])}</h4><p>${esc(x[1])}</p>`).join("")}<p class="meta">Per approfondire: ${esc(l.c)}</p>${sayBtn("lez")}</article>`;
+ $("plist").innerHTML=L.map((x,j)=>`<button type="button" data-p="${j}"${j===i?' aria-current="true"':''}><b>${j+1}. ${esc(x.t)}</b><span>${j===todayL?"oggi":esc(x.area)}</span></button>`).join("");
  syncSay();
 };
-$("plist").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(!b)return;pi=+b.dataset.p;drawPill(pi);$("pill").scrollIntoView({behavior:"smooth"})});
+$("plist").addEventListener("click",e=>{const b=e.target.closest("[data-p]");if(!b)return;stopAll();drawLesson(+b.dataset.p);$("pill").scrollIntoView({behavior:"smooth"})});
 
+/* ---------- Mons. Leone ---------- */
+const S=[
+ {t:"La preevangelizzazione, prima tappa dell'iniziazione cristiana",m:"Rivista «Salós», ISSR di Trani; pubblicato anche dall'Arcidiocesi di Trani-Barletta-Bisceglie nel 2004. Sottotitolo: Dal RICA alle Note pastorali dei Vescovi.",
+  tema:"Lo studio nasce dal suo lavoro nel servizio diocesano per il catecumenato. La presentazione dell'Arcidiocesi ne riassume la tesi di fondo: oggi si diventa cristiani per scelta personale e non più per nascita.",
+  ctx:["Il Concilio Vaticano II ha ripristinato il catecumenato degli adulti, distinto in più tappe (Sacrosanctum Concilium 64; Ad gentes 14). Nel 1972 è stato pubblicato il Rito dell'iniziazione cristiana degli adulti (RICA), che prevede un cammino in quattro tempi: il precatecumenato, cioè il primo annuncio; il catecumenato vero e proprio; la purificazione e illuminazione, che coincide con la Quaresima; la mistagogia, il tempo dopo i sacramenti in cui si approfondisce ciò che si è ricevuto.","La preevangelizzazione si colloca prima ancora del precatecumenato: è il tempo in cui una persona, magari lontana dalla fede o mai incontrata davvero, comincia a porsi domande e incontra testimoni credibili. La Chiesa la rispetta come un tempo prezioso, senza fretta e senza pressioni.","Tra il 1997 e il 2003 i Vescovi italiani hanno pubblicato tre Note pastorali sull'iniziazione cristiana: la prima per gli adulti, la seconda per i ragazzi dai 7 ai 14 anni, la terza per chi da adulto deve completare l'iniziazione. Sono queste le Note a cui il titolo dello studio fa riferimento.","Il punto teologico è decisivo per la Chiesa di oggi. In una società dove la fede non si trasmette più quasi automaticamente con la cultura e la famiglia, ogni cristiano è chiamato a diventarlo per una scelta consapevole. La parrocchia non può più presupporre la fede: deve generarla, come una madre."]},
+ {t:"La penitenza sacramento pasquale",m:"Rivista «Salós», n. 10, 2010, p. 153.",
+  tema:"Uno studio di teologia sacramentaria, la sua materia di insegnamento, sul sacramento della Riconciliazione letto alla luce della Pasqua.",
+  ctx:["Il titolo esprime una prospettiva cara alla teologia del Novecento e al rinnovamento liturgico: tutti i sacramenti nascono dal Mistero pasquale di Cristo. Il Vaticano II afferma che la liturgia trae la sua efficacia dal mistero della passione, morte e risurrezione del Signore (Sacrosanctum Concilium 61).","Per la Penitenza il legame è esplicito nel Vangelo: è la sera di Pasqua che Gesù risorto soffia sugli apostoli e dona loro lo Spirito per perdonare i peccati (Gv 20,22-23). Il perdono è quindi un frutto della Risurrezione.","Il Rito della Penitenza riformato nel 1973 ha messo al centro la Parola di Dio e la dimensione ecclesiale della riconciliazione, superando un'idea solo individuale e giuridica della confessione. San Giovanni Paolo II ha ripreso questi temi nell'esortazione Reconciliatio et paenitentia (1984).","Nella lezione di teologia «La Penitenza, sacramento pasquale» di questa app trovi lo sviluppo completo del tema, con la Scrittura, i Padri e il Magistero."]},
+ {t:"La parrocchia in una società in evoluzione, in una Chiesa in cammino",m:"Rivista «Salós», n. 10, 2010, p. 135.",
+  tema:"Una riflessione maturata in decenni di ministero da parroco, sul volto della parrocchia in un mondo che cambia.",
+  ctx:["Il titolo riprende due espressioni chiave del dibattito ecclesiale italiano di quegli anni. Nel 2004 i Vescovi italiani avevano pubblicato la nota pastorale Il volto missionario delle parrocchie in un mondo che cambia, chiedendo di passare da una pastorale di conservazione a una pastorale missionaria.","La società in evoluzione indica la secolarizzazione, la mobilità delle persone, la fine della coincidenza tra paese e parrocchia. La Chiesa in cammino richiama l'immagine conciliare del Popolo di Dio pellegrino nella storia (Lumen gentium cap. II e VII).","Il magistero successivo ha confermato questa direzione: papa Francesco, in Evangelii gaudium (2013), descrive la parrocchia come comunità di comunità e santuario dove gli assetati vanno a bere (EG 28); la Congregazione per il Clero ha pubblicato nel 2020 l'istruzione La conversione pastorale della comunità parrocchiale.","Lo studio si colloca dunque al cuore di una domanda ancora aperta: come può la parrocchia restare vicina alla vita della gente e insieme diventare missionaria?"]},
+ {t:"Teologia sacramentaria e Pneumatologia",m:"Le materie che ha insegnato all'ISSR «San Nicola, il Pellegrino» di Trani.",
+  tema:"Due discipline che si illuminano a vicenda: i sacramenti sono i luoghi in cui lo Spirito Santo rende presente oggi l'opera di Cristo.",
+  ctx:["La teologia sacramentaria studia i sette sacramenti: la loro origine in Cristo, la loro celebrazione, la loro efficacia e il loro significato per la vita del credente.","La pneumatologia studia la persona e l'opera dello Spirito Santo, dalla creazione alla Pentecoste, fino alla vita della Chiesa e di ogni cristiano.","Il punto di incontro è l'epíclesi, l'invocazione dello Spirito presente in ogni sacramento. Nella Messa, prima della consacrazione, il sacerdote chiede al Padre di santificare i doni con la rugiada del suo Spirito. La teologia contemporanea, specialmente nel dialogo con l'Oriente cristiano, ha riscoperto questa dimensione: senza lo Spirito, i sacramenti sarebbero riti del passato; con lo Spirito, sono incontri vivi con Cristo.","Nelle lezioni di questa app su Lo Spirito Santo e su I sacramenti questi temi sono sviluppati per intero."]}
+];
+$("studi").innerHTML=S.map((s,i)=>`<article class="card"><span class="kind">Studio e contesto</span><h3>${esc(s.t)}</h3><p class="meta">${esc(s.m)}</p><p>${esc(s.tema)}</p><details><summary>Il contesto teologico</summary>${s.ctx.map(p=>`<p>${esc(p)}</p>`).join("")}</details></article>`).join("");
+const T=[
+ {y:"Settembre 2026",q:"«Una vera esperienza di santità»",p:"È l'augurio che rivolge a chi viene a pregare davanti alla Madonna di Loreto, invocata come regina della famiglia e della pace e salute degli infermi. In questa espressione c'è una teologia del santuario: non un luogo di emozioni, ma di conversione.",u:"https://telenorba.it/2026/09/01/barletta-attesa-per-leffige-della-madonna-di-loreto/",s:"Telenorba"},
+ {y:"Aprile 2026",q:"«Il cuore di ogni credente si rivolge a una Mamma»",p:"Nella sofferenza e nella crisi, dice, ci si rivolge a Maria. E aggiunge che la pace non è uno slogan: nasce da una vita vissuta nella forza di Cristo risorto. È la mariologia del Concilio: Maria non trattiene a sé, ma conduce al Risorto.",u:"https://www.barlettaviva.it/notizie/la-madonna-di-loreto-a-barletta-sara-accolta-presso-la-chiesa-arcivescovile-santa-maria-di-nazaret/",s:"BarlettaViva"},
+ {y:"Settembre 2025",q:"Maria, Madre di Gesù e Madre della Chiesa",p:"È il tema che ha scelto per le meditazioni della festa del Santissimo Nome di Maria. Il titolo di Madre della Chiesa, proclamato da san Paolo VI nel 1964, unisce la maternità di Maria verso Cristo e verso i credenti. Nella stessa occasione ha spiegato ai fedeli il senso dell'indulgenza, che alleggerisce la pena che resta dopo il peccato perdonato.",u:"https://www.barlettaviva.it/notizie/barletta-celebra-al-festa-del-santissimo-nome-di-maria-di-nazareth/",s:"BarlettaViva"},
+ {y:"Aprile 2016",q:"«La fede è il collirio della vita spirituale»",p:"Lo ha detto alla Messa per le reliquie di Santa Lucia, protettrice della vista. L'immagine ha radici bibliche: nell'Apocalisse il Signore consiglia di comprare il collirio per ungere gli occhi e vedere (Ap 3,18). La fede è una luce che guarisce lo sguardo. Ha aggiunto che le reliquie rendono la santità vicina e concreta, perché i santi non sono figure lontane.",u:"https://www.barlettaviva.it/notizie/le-spoglie-di-santa-lucia-a-barletta-il-ricordo-della-santa-dopo-secoli-e-vivo-nel-cuore-dei-fedeli-e-di-tutta-la-comunita-religiosa/",s:"BarlettaViva"},
+ {y:"Giugno 2012",q:"«Ma questo è stato sempre vero, a partire dal nostro Maestro Gesù Cristo»",p:"Per i quarant'anni di sacerdozio ha riconosciuto che essere Chiesa e credenti oggi è sempre più difficile, perché certe espressioni della cultura deludono l'attesa dell'uomo. Ma ha indicato una costante: il radicamento nella Parola e nell'Eucaristia, fonte dell'impegno di ogni sacerdote, imparato negli anni del rinnovamento conciliare.",u:"http://www.incomunione.it/incomunione/assets/incomunione2012-02.pdf",s:"In Comunione"}
+];
 $("thoughts").innerHTML=T.map(t=>`<article class="card"><p class="meta">${esc(t.y)}</p><p class="quote">${esc(t.q)}</p><p>${esc(t.p)}</p><p class="src">Fonte: <a href="${esc(t.u)}">${esc(t.s)}</a></p></article>`).join("");
+const W=[
+ {t:"Santa Lucia",k:"Libro",m:"Con Michele Dinicastro. Cafagna Editore, 2011",p:"Un libro sulla martire siracusana protettrice della vista, scritto da parroco del Santuario di Santa Lucia a Barletta."},
+ {t:"La luce della fede",k:"Conferenza",m:"Cerignola, 20 aprile 2016",p:"Conferenza spirituale durante la visita delle reliquie di Santa Lucia: il nome di Lucia, da lux, luce, diventa occasione per parlare della fede come illuminazione, termine con cui i Padri chiamavano il Battesimo."},
+ {t:"Saggio in «Il Burattinaio Mangiafuoco»",k:"Contributo",m:"A cura di Domenico Doronzo, 2018",p:"Un libro illustrato su potere, fede e illustrazione, in cui scrive come teologo accanto a un filosofo, un illustratore e una restauratrice."},
+ {t:"Messaggi per le feste mariane",k:"Lettere ai fedeli",m:"2022, 2025 e 2026",p:"Ogni anno scrive alla comunità per la Madonna di Loreto e il Santissimo Nome di Maria, spiegando anche le condizioni per l'indulgenza plenaria: confessione, comunione, preghiera per le intenzioni del Papa, distacco dal peccato."}
+];
 $("writings").innerHTML=W.map(w=>`<article class="card"><span class="kind">${esc(w.k)}</span><h3>${esc(w.t)}</h3><p class="meta">${esc(w.m)}</p><p>${esc(w.p)}</p></article>`).join("");
 
-/* voice */
-let tts=null,ttsTried=false,speaking=null;
+/* ---------- Voce ---------- */
+let speaking=null;
 const hasWeb="speechSynthesis" in window;
-const syncSay=()=>{for(const b of document.querySelectorAll("[data-say]")){b.hidden=!(say[b.dataset.say]&&(tts||hasWeb));b.querySelector("span").textContent=speaking===b.dataset.say?"Ferma":"Ascolta"}};
-const stopAll=()=>{try{tts?.stop()}catch(e){}try{if(hasWeb)speechSynthesis.cancel()}catch(e){}speaking=null;syncSay()};
-document.addEventListener("click",async e=>{
+const syncSay=()=>{for(const b of document.querySelectorAll("[data-say]")){b.hidden=!(say[b.dataset.say]&&hasWeb);b.querySelector("span").textContent=speaking===b.dataset.say?"Ferma":"Ascolta"}};
+const stopAll=()=>{try{if(hasWeb)speechSynthesis.cancel()}catch(e){}speaking=null;syncSay()};
+const chunks=t=>String(t).replace(/\s+/g," ").match(/[^.!?;:]+[.!?;:]*/g)||[];
+const voice=()=>{try{return speechSynthesis.getVoices().find(v=>/^it/i.test(v.lang))||null}catch(e){return null}};
+document.addEventListener("click",e=>{
  const b=e.target.closest("[data-say]");if(!b)return;
  const k=b.dataset.say;
  if(speaking===k){stopAll();return}
  stopAll();speaking=k;syncSay();
- const text=say[k];
- try{
-  if(tts){await tts.speak(text,{language:"it",rate:.9})}
-  else{await new Promise((res,rej)=>{const u=new SpeechSynthesisUtterance(text);u.lang="it-IT";u.rate=.9;u.onend=res;u.onerror=rej;speechSynthesis.speak(u)})}
- }catch(err){}
- if(speaking===k){speaking=null;syncSay()}
+ const parts=chunks(say[k]);const v=voice();
+ parts.forEach((p,i)=>{const u=new SpeechSynthesisUtterance(p.trim());u.lang="it-IT";u.rate=.92;if(v)u.voice=v;if(i===parts.length-1)u.onend=()=>{if(speaking===k){speaking=null;syncSay()}};speechSynthesis.speak(u)});
 });
-syncSay();
 
-/* daily content from the app's database */
+/* ---------- Contenuti del giorno ---------- */
+const card=(kind,title,body,k,meta)=>`<div class="card"><span class="kind">${esc(kind)}</span>${title?`<h3>${esc(title)}</h3>`:""}${meta?`<p class="meta">${esc(meta)}</p>`:""}${body}${k?sayBtn(k):""}</div>`;
 const fill=d=>{
- if(!d)return;
  const old=d.data&&d.data!==iso;
- if(d.celebrazione)$("festa").textContent=d.celebrazione+(old?` (aggiornato al ${new Date(d.data+"T12:00").toLocaleDateString("it-IT",{day:"numeric",month:"long"})})`:"");
+ if(d.celebrazione)$("festa").textContent=d.celebrazione+(d.tempo?" · "+d.tempo:"")+(old?` (aggiornato al ${new Date(d.data+"T12:00").toLocaleDateString("it-IT",{day:"numeric",month:"long"})})`:"");
  if(d.vangeloRif)$("vref").textContent=d.vangeloRif;
  if(d.vangeloTitolo)$("vtit").textContent=d.vangeloTitolo;
- if(d.vangeloRiassunto){$("vtext").textContent=d.vangeloRiassunto;$("vtext").className="";say.vangelo=`${d.vangeloTitolo||""}. ${d.vangeloRiassunto}`}
- if(d.papaSintesi){$("ptext").textContent=d.papaSintesi;$("ptext").className="";say.papa=d.papaSintesi}
- if(d.papaNome)$("ptit").textContent="Le parole di "+d.papaNome;
- if(d.papaFonte)$("pfonte").textContent=d.papaFonte;
- if(d.santoNome){$("snome").textContent=d.santoNome;$("snome").className=""}
- if(d.santoStoria){$("stext").textContent=d.santoStoria;say.santo=`${d.santoNome}. ${d.santoStoria}`}
+ if(d.letture)$("letture").textContent="Letture della Messa: "+d.letture;
+ if(d.vangeloRiassunto){$("vtext").innerHTML=paras(d.vangeloRiassunto);say.vangelo=`${d.vangeloTitolo||""}. ${d.vangeloRiassunto}`}
+ let h="";
+ if(d.contesto){h+=card("Il contesto","Dove ci troviamo",paras(d.contesto),"ctx");say.ctx=d.contesto}
+ if(Array.isArray(d.commento)&&d.commento.length){const b=d.commento.map(c=>`<h4>${esc(c.titolo)}</h4>${paras(c.testo)}`).join("");h+=card("Il commento","Leggere il brano da vicino",b,"comm");say.comm=d.commento.map(c=>c.titolo+". "+c.testo).join(" ")}
+ if(d.padri){h+=card("I Padri della Chiesa",d.padriTitolo||"Come lo hanno letto i Padri",paras(d.padri),"padri");say.padri=d.padri}
+ if(d.papaSintesi){h+=card("Le parole del Papa",d.papaNome?"Le parole di "+d.papaNome:"Il Papa",paras(d.papaSintesi),"papa",d.papaFonte);say.papa=d.papaSintesi}
+ if(d.teologia){h+=card("Il tema teologico",d.teologiaTitolo||"",paras(d.teologia),"teo");say.teo=d.teologia}
+ if(d.preghiera){h+=card("Per pregare","",`<p class="quote" style="font-size:1.2em">${esc(d.preghiera)}</p>`,"preg");say.preg=d.preghiera}
+ $("vmore").innerHTML=h;
+ if(d.santoNome)$("snome").textContent=d.santoNome;
+ if(d.santoStoria){$("stext").innerHTML=paras(d.santoStoria);say.santo=`${d.santoNome}. ${d.santoStoria}`}
+ let s="";
+ if(d.santoContesto){s+=card("Il contesto storico","",paras(d.santoContesto),"sctx");say.sctx=d.santoContesto}
+ if(d.santoTeologia){s+=card("Il significato per la fede",d.santoTeologiaTitolo||"",paras(d.santoTeologia),"steo");say.steo=d.santoTeologia}
+ $("smore").innerHTML=s;
  if(typeof d.link==="string"&&d.link.startsWith("https://")&&!old)$("vlink").href=d.link;
  syncSay();
 };
-const noData=()=>{if($("vtext").className==="wait"){$("vtext").textContent="Il riassunto di oggi non è ancora arrivato. Tocca il pulsante qui sotto per leggere e ascoltare il Vangelo sul sito del Vaticano.";$("ptext").textContent="Il commento del Papa si trova nella stessa pagina ufficiale.";$("snome").textContent="Il santo di oggi";$("stext").textContent="Tocca il pulsante per leggere la sua storia su Vatican News."}};
+const noData=()=>{if($("vtext").querySelector(".wait")){$("vtext").innerHTML="<p>Il commento di oggi non è ancora arrivato. Tocca il pulsante qui sotto per leggere e ascoltare il Vangelo sul sito del Vaticano.</p>";$("snome").textContent="Il santo di oggi";$("stext").innerHTML="<p>Tocca il pulsante per leggere la sua storia su Vatican News.</p>"}};
 const timer=setTimeout(noData,10000);
 (async()=>{
  try{
@@ -286,19 +282,17 @@ const timer=setTimeout(noData,10000);
  }catch(e){clearTimeout(timer);noData()}
 })();
 
-/* tabs */
+/* ---------- Schede e testo ---------- */
 const views=["vangelo","teologia","sacerdote","santo"],tabs=[...document.querySelectorAll(".tab")];
 const show=()=>{const v=views.includes(location.hash.slice(1))?location.hash.slice(1):"vangelo";views.forEach(x=>$(x).hidden=x!==v);tabs.forEach(t=>t.setAttribute("aria-selected",t.dataset.v===v))};
 tabs.forEach(t=>t.addEventListener("click",()=>{stopAll();location.hash=t.dataset.v;window.scrollTo(0,0)}));
 window.addEventListener("hashchange",show);show();
-
-/* text size */
 let z=1;try{z=parseFloat(localStorage.getItem("zoom"))||1}catch(e){}
 const setZ=v=>{z=Math.round(Math.min(1.5,Math.max(.9,v))*10)/10;document.documentElement.style.setProperty("--z",z);try{localStorage.setItem("zoom",z)}catch(e){}};
 setZ(z);
 $("zp").addEventListener("click",()=>setZ(z+.1));
 $("zm").addEventListener("click",()=>setZ(z-.1));
-drawPill(pi);
+drawLesson(todayL);
 }
 </script>
 </body>
